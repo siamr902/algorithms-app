@@ -24,7 +24,7 @@ const Header = () => {
         <div className="flex space-x-6 items-center">
           <InfoModal />
           <AiOutlineHome
-            className="w-11 h-11 text-blue-400 cursor-pointer hover:scale-90 transition duration-200 ease-out"
+            className="w-11 h-11 text-gray-300 cursor-pointer hover:scale-90 transition duration-200 ease-out"
             onClick={() => router.push("/")}
           />
         </div>

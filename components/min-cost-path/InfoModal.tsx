@@ -7,7 +7,7 @@ const InfoModal = () => {
   return (
     <div>
       <BsInfoLg
-        className="w-8 h-7 text-sky-400 cursor-pointer hover:scale-90 transition ease-out duration-200"
+        className="w-8 h-7 text-gray-300 cursor-pointer hover:scale-90 transition ease-out duration-200"
         onClick={() => setShowModal(true)}
       />
       {showModal && <Modal setShowModal={setShowModal} />}
