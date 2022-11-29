@@ -13,15 +13,13 @@ interface GridProps {
   setSudokuBoard: (val: number[][]) => void;
   boardErrors?: boolean[][];
   setBoardErrors: (val: boolean[][]) => void;
-  refs: any[];
 }
 
-const TestButtons = ({
+const TestButtons = React.forwardRef(({
   sudokuBoard,
   setSudokuBoard,
   setBoardErrors,
-  refs,
-}: GridProps) => {
+}: GridProps, ref: any) => {
   const [gameRunning, setGameRunning] = useState<boolean>(false);
   const emptyBoard = emptySudokuBoard();
 
@@ -33,10 +31,10 @@ const TestButtons = ({
   };
 
   const resetTiles = async (): Promise<void> => {
-    for (let i = 0; i < refs.length; i++) {
-      for (let j = 0; j < refs[i].length; j++) {
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
         await sleep(1);
-        refs[i][j].current.classList.remove("whiteTile");
+        ref.current[i][j].classList.remove("whiteTile");
       }
     }
   };
@@ -62,9 +60,9 @@ const TestButtons = ({
   };
 
   const animateBoard = (row: number, col: number, value: number) => {
-    refs[row][col].current.classList.toggle("whiteTile");
-    refs[row][col].current.value = value;
-    setTimeout(() => refs[row][col].current.classList.remove("whiteTile"), 1000)
+    ref.current[row][col].classList.toggle("whiteTile");
+    ref.current[row][col].value = value;
+    setTimeout(() => ref.current[row][col].classList.remove("whiteTile"), 1000)
   };
 
   const solveSudoku = async (board: number[][]) => {
@@ -165,5 +163,5 @@ const TestButtons = ({
       </button>
     </div>
   );
-};
+});
 export default TestButtons;

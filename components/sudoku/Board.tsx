@@ -18,16 +18,7 @@ const Board: React.FC = () => {
     return !/[^\d+]/.test(value);
   };
 
-  const sudokuRef = useRef<HTMLInputElement[][]>([...Array(9)].map((_) => [...Array(9)]));
-
-  const refs: any = [];
-  for (let i = 0; i < 9; i++) {
-    const rowRefs: any = [];
-    for (let j = 0; j < 9; j++) {
-      rowRefs.push(useRef());
-    }
-    refs.push(rowRefs);
-  }
+  const sudokuRef = useRef<HTMLInputElement[][] | null[][]>([...Array(9)].map((_) => [...Array(9)]));
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -74,7 +65,7 @@ const Board: React.FC = () => {
                           sudokuBoard[ri][ci] === 0 ? "" : sudokuBoard[ri][ci]
                         }
                         onChange={(e) => handleChange(e, ri, ci)}
-                        ref={refs[ri][ci]}
+                        ref={(el) => sudokuRef.current[ri][ci] = el}
                       />
                     </td>
                   );
@@ -89,7 +80,7 @@ const Board: React.FC = () => {
         setSudokuBoard={setSudokuBoard}
         boardErrors={boardErrors}
         setBoardErrors={setBoardErrors}
-        refs={refs}
+        ref={sudokuRef}
       />
     </div>
   );
