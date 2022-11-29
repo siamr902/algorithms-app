@@ -39,6 +39,7 @@ const Board = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: i / 2 + 3 }}
           disabled={gameRunning}
+          key={i}
         >
           {i + 1}
         </motion.button>

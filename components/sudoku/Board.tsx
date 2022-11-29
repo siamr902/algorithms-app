@@ -18,6 +18,8 @@ const Board: React.FC = () => {
     return !/[^\d+]/.test(value);
   };
 
+  const sudokuRef = useRef<HTMLInputElement[][]>([...Array(9)].map((_) => [...Array(9)]));
+
   const refs: any = [];
   for (let i = 0; i < 9; i++) {
     const rowRefs: any = [];

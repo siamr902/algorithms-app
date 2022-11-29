@@ -11,12 +11,12 @@ const Container = () => {
 
   useEffect(() => {
     handleVerification(value) ? setValid(true) : setValid(false);
-  }, [value]);
+  }, [value, handleVerification]);
 
   const matchParenthesis = (input: string) =>
     input.match(/[\(\)\{\}\[\]]/g) ?? [];
 
-  const handleVerification = (value: string) => {
+  function handleVerification(value: string) {
     const stack = [];
     const dict = {
       "(": ")",

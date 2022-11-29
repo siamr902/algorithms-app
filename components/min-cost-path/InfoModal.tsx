@@ -22,7 +22,7 @@ const Modal = ({ setShowModal }: { setShowModal: (v: boolean) => void }) => {
         className="absolute h-6 w-6 top-3 right-3 text-red-400 cursor-pointer"
         onClick={() => setShowModal(false)}
       />
-      <div className="font-oswald text-2xl text-sky-300">What's Going On?</div>
+      <div className="font-oswald text-2xl text-sky-300">What&apos;s Going On?</div>
       <p className="text-center font-mono leading-10">
         The objective is to find the cheapest path from the top-left corner cell
         to the bottom-right corner cell. The constraints are that you can only

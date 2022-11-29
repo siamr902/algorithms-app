@@ -20,21 +20,21 @@ const Search = ({ inputValue }: Props) => {
 
   useEffect(() => {
     handleMid();
-  }, [bounds]);
+  }, [bounds, handleMid]);
 
   useEffect(() => {
     checkComplete();
-  }, [mid]);
+  }, [mid, setMid, checkComplete]);
 
   const handleStart = () => {
     handleMid();
     setGameRunning(true);
   };
 
-  const handleMid = () => {
+  function handleMid() {
     const mid = Math.floor((bounds.lower + bounds.upper) / 2);
     setMid(mid);
-  };
+  }
 
   const handleGreater = () => {
     setBounds((prev) => ({ ...prev, lower: mid + 1 }));
@@ -44,10 +44,10 @@ const Search = ({ inputValue }: Props) => {
     setBounds((prev) => ({ ...prev, upper: mid - 1 }));
   };
 
-  const checkComplete = () => {
+  function checkComplete() {
     if (!gameRunning) return;
     if (bounds.lower === bounds.upper) handleCorrect();
-  };
+  }
 
   const handleCorrect = () => {
     toast(`Your number is ${mid}!`, {

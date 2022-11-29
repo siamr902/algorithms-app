@@ -20,7 +20,7 @@ const Grid = ({
 
   useEffect(() => {
     clearGrid();
-  }, [size]);
+  }, [size, clearGrid]);
 
   const generateRandomCosts = async () => {
     for (let i = 0; i < size; i++) {
@@ -32,7 +32,7 @@ const Grid = ({
     setResult(0);
   };
 
-  const clearGrid = async () => {
+  async function clearGrid() {
     for (let i = 0; i < size; i++) {
       for (let j = 0; j < size; j++) {
         await sleep(10);
@@ -41,7 +41,7 @@ const Grid = ({
       }
     }
     setResult(0);
-  };
+  }
 
   const clearClass = async () => {
     for (let i = 0; i < size; i++) {
@@ -131,14 +131,18 @@ const Grid = ({
     <div className="relative mt-5 flex items-center justify-center flex-col space-y-4">
       <div className="flex space-x-5 justify-between items-center w-full">
         <button
-          className={`cost-btn from-orange-500 to-pink-400 ${gameRunning ? "cursor-not-allowed" : ""}`}
+          className={`cost-btn from-orange-500 to-pink-400 ${
+            gameRunning ? "cursor-not-allowed" : ""
+          }`}
           onClick={generateRandomCosts}
           disabled={gameRunning}
         >
           Generate Random Costs
         </button>
         <button
-          className={`cost-btn from-blue-500 to-fuchsia-500 rounded-lg ${gameRunning ? "cursor-not-allowed" : ""}`}
+          className={`cost-btn from-blue-500 to-fuchsia-500 rounded-lg ${
+            gameRunning ? "cursor-not-allowed" : ""
+          }`}
           onClick={clearGrid}
           disabled={gameRunning}
         >
@@ -154,7 +158,9 @@ const Grid = ({
         {generateGrid()}
       </table>
       <button
-        className={`cost-btn from-pink-300 to-red-300 text-2xl ${gameRunning ? "cursor-not-allowed" : ""}`}
+        className={`cost-btn from-pink-300 to-red-300 text-2xl ${
+          gameRunning ? "cursor-not-allowed" : ""
+        }`}
         onClick={() => runGame()}
         disabled={gameRunning}
       >

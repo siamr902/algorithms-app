@@ -15,7 +15,7 @@ const Header = () => {
         <HiHome className="w-12 h-12 text-gray-100 hover:scale-90 active:scale-100 transition duration-150 ease-out hover:brightness-125 cursor-pointer" />
       </div>
       <div className="absolute top-3 right-8">
-        <a href={links.stack} target="_blank">
+        <a href={links.stack} target="_blank" rel="noopener noreferrer">
           <BsQuestionLg className="w-10 h-10 cursor-pointer hover:scale-90 transition duration-100 ease-out text-white" />
         </a>
       </div>
