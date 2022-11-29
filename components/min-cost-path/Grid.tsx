@@ -22,7 +22,7 @@ const Grid = ({
     clearGrid();
   }, [size, clearGrid]);
 
-  useCallback(clearGrid, []);
+  useCallback(clearGrid, [size]);
 
   const generateRandomCosts = async () => {
     for (let i = 0; i < size; i++) {

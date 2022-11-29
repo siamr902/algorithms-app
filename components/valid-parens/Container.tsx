@@ -13,7 +13,7 @@ const Container = () => {
     handleVerification(value) ? setValid(true) : setValid(false);
   }, [value, handleVerification]);
 
-  useCallback(handleVerification, []);
+  useCallback(handleVerification, [value]);
 
   const matchParenthesis = (input: string) =>
     input.match(/[\(\)\{\}\[\]]/g) ?? [];

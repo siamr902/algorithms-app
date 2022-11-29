@@ -26,8 +26,6 @@ const Search = ({ inputValue }: Props) => {
     checkComplete();
   }, [mid, setMid, checkComplete]);
   
-  useCallback(handleMid, []);
-  useCallback(checkComplete, []);
 
   const handleStart = () => {
     handleMid();
@@ -64,6 +62,9 @@ const Search = ({ inputValue }: Props) => {
     setGameRunning(false);
     setBounds({ lower: 0, upper: parseInt(inputValue) || 100 });
   };
+  
+  useCallback(handleMid, [bounds.upper, bounds.lower]);
+  useCallback(checkComplete, [bounds.upper, bounds.lower, gameRunning, handleCorrect]);
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
