@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 const Container = () => {
   const [value, setValue] = useState<string>("");
@@ -12,6 +12,8 @@ const Container = () => {
   useEffect(() => {
     handleVerification(value) ? setValid(true) : setValid(false);
   }, [value, handleVerification]);
+
+  useCallback(handleVerification, []);
 
   const matchParenthesis = (input: string) =>
     input.match(/[\(\)\{\}\[\]]/g) ?? [];

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 interface Props {
@@ -25,6 +25,9 @@ const Search = ({ inputValue }: Props) => {
   useEffect(() => {
     checkComplete();
   }, [mid, setMid, checkComplete]);
+  
+  useCallback(handleMid, []);
+  useCallback(checkComplete, []);
 
   const handleStart = () => {
     handleMid();
@@ -35,6 +38,7 @@ const Search = ({ inputValue }: Props) => {
     const mid = Math.floor((bounds.lower + bounds.upper) / 2);
     setMid(mid);
   }
+
 
   const handleGreater = () => {
     setBounds((prev) => ({ ...prev, lower: mid + 1 }));

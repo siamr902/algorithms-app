@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { deepCopy } from "../../utils/deepCopy";
 import { initalGrid } from "../../utils/min-cost-path/gridArrayRef";
 import { randomNumber } from "../../utils/min-cost-path/randomNumber";
@@ -21,6 +21,8 @@ const Grid = ({
   useEffect(() => {
     clearGrid();
   }, [size, clearGrid]);
+
+  useCallback(clearGrid, []);
 
   const generateRandomCosts = async () => {
     for (let i = 0; i < size; i++) {

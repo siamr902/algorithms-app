@@ -164,4 +164,7 @@ const TestButtons = React.forwardRef(({
     </div>
   );
 });
+
+TestButtons.displayName = "TestButtons";
+
 export default TestButtons;
