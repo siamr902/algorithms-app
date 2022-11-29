@@ -1,19 +1,22 @@
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { HiOutlineSun } from "react-icons/hi";
 
 const Header = () => {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
   const [darkMode, setDarkMode] = useState<boolean>(true);
 
+  useEffect(() => {
+    setTheme(darkMode ? "dark" : "light");
+  }, [darkMode]);
+
   const handleClick = () => {
     setDarkMode((prev) => !prev);
-    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -36,10 +39,7 @@ const Header = () => {
         initial={{ opacity: 0 }}
         transition={{ delay: 1, duration: 2 }}
       >
-        <motion.button
-          onClick={handleClick}
-          whileTap={{ scale: 0.9 }}
-        >
+        <motion.button onClick={handleClick} whileTap={{ scale: 0.9 }}>
           {!darkMode ? (
             <HiOutlineSun className="h-10 w-10" />
           ) : (
