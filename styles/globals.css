@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth
+  }
+  body {
+    @apply bg-gray-100 overflow-x-hidden scrollbar-thin dark:scrollbar-track-gray-900 dark:scrollbar-thumb-gray-100 scrollbar-track-zinc-100 scrollbar-thumb-zinc-200 transition duration-500 ease-in-out
+  }
+}
+
+@layer components {
+  .sudoku-btn {
+    @apply w-20 hover:scale-95 rounded-lg p-4 text-white flex justify-center font-serif font-semibold transition duration-200 ease-out;
+  }
+  .binary-btn {
+    @apply cursor-pointer font-kalam w-20 hover:scale-90 rounded-lg p-4 text-white flex justify-center items-center font-semibold active:scale-100 transition duration-200 ease-in-out text-xl;
+  }
+  .cost-btn {
+    @apply text-xl font-kalam font-semibold rounded-lg text-transparent bg-clip-text bg-gradient-to-r;
+  }
+  .sort-btn {
+    @apply text-xl md:text-2xl font-kalam text-black;
+  }
+}
+
+.whiteTile {
+  background-color: whitesmoke;
+  transform: scale(1);
+  color: black;
+}
+
+.activePath {
+  background-color: bisque;
+  color: black;
+}
+
+.hitEnd {
+  background-color: lightcoral;
+  transform: scale(1.2);
+}
+
+.donePath {
+  background-color: azure;
+  color: white;
+  transform: scale(1.2);
+}
+
+.queenPath {
+  position: relative;
+  background-color: transparent;
+}
+
+.queenPath::after {
+  content: "❔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.queenValidSpot {
+  background-color: #ffa556;
+  animation: bg 10s linear infinite;
+}
+
+.finishedBoard {
+  background-color: black !important;
+  color: white !important;
+}
+
+@keyframes bg {
+  0% {
+    background-color: #ffa556;
+    color: black;
+  }
+  25% {
+    background-color: #ff973c;
+  }
+  50% {
+    background-color: #ffb16c;
+    color: orangered;
+  }
+  75% {
+    background-color: #f8943c;
+  }
+  100% {
+    background-color: #ffa556;
+    color: black;
+  }
+}
+
+.sort-border {
+  position: relative;
+}
+
+.sort-border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: 0.25s ease-out;
+  background-color: lightskyblue;
+}
+
+.sort-border:hover::after {
+  transform: scaleX(1);
+}
+
+.greater {
+  background-color: rgb(0, 199, 0);
+}
+
+.opacity {
+  opacity: 0.8;
+  background-color: #f8943c; 
+}

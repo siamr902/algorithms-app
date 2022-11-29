@@ -1,0 +1,1 @@
+export const sortButtons: string[] = ["Bubble", "Insertion", "Selection", "Merge", "Quick"];
