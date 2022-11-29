@@ -35,7 +35,7 @@ const Board: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center mt-8 items-center flex-col">
+    <div className="flex justify-center mt-8 items-center flex-col pb-10">
       <ToastContainer />
       <table className="border-separate border-spacing-[2px]">
         <tbody>

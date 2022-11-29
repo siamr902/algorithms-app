@@ -19,10 +19,17 @@ const Grid = ({
   const inputRefs = useRef<any[][]>(sizeArray);
 
   useEffect(() => {
-    clearGrid();
-  }, [size, clearGrid]);
-
-  useCallback(clearGrid, [size]);
+    (async function () {
+      for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+          await sleep(10);
+          inputRefs.current[i][j].value = null;
+          inputRefs.current[i][j].classList.remove("activePath");
+        }
+      }
+      setResult(0);
+    })();
+  }, [size]);
 
   const generateRandomCosts = async () => {
     for (let i = 0; i < size; i++) {

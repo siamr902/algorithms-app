@@ -6,7 +6,7 @@ type Project = {
 
 export const projectPages: Project[] = [
   {
-    name: "Queue Memorization Game",
+    name: "Queue Recall",
     path: "memorygame",
     img: "/memorization-game.png",
   },
