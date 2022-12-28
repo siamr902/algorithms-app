@@ -1,34 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <img alt="logo" src="https://raw.githubusercontent.com/siamr902/algorithms-app/master/public/algo-logo.png" width="100"/>
+</div>
 
-## Getting Started
+<h1 align="center">
+  Algorithms Collection
+</h1>
 
-First, run the development server:
+<h2>About</h2>  
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+A mini-collection of animated algorithms to help visualize programming concepts like `backtracking`, recursive `dynamic programming`, `queues`, and more. The primary intention of this project was to practice adapting certain pieces of logic into their respective code variants. Examples include a sudoku backtracking visualization with solving functionality, a visualization of Leetcode's Minimum Path Sum, a visualization of the classic N-Queens problem, etc. I may consider adding more projects to the collection in the future, but for now I find them to be somewhat repetitive: figuring out how to animate the first algorithm made the others less fulfilling. Nonetheless, designing the UI was enjoyable, and the project strengthened my understanding of `Typescript`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h2>Obstacles</h2>  
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I faced a multitude of issues throughout building the separate visualizers. One recurring issue across several of the apps was finding the breakpoints at which to animate certain steps of the algorithm. This would include setting the `sleep` function and duration, as well as applying any style changes. Another issue I faced, particularly those that involved a 2d grid of some sort (such as the sudoku app and the minimum cost path), was implementing a way to access each separate cell container. The *non-ideal* way would have been to assign `ids` to each cell and find a way to access them using `getElementById`, but this isn't vanilla js; we must do things the way react intends. The solution was incredulously rudimentary: create an array of `useRef` hooks to store each cell (input), and forward the ref to any components that may need access to modify certain properties.
